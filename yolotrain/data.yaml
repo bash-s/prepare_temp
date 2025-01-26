@@ -1,0 +1,8 @@
+# 数据集路径
+train: C:\Users\86134\Desktop\电赛\yolotrain\images\train  # 训练集图片路径
+val: C:\Users\86134\Desktop\电赛\yolotrain\images\val # 验证集图片路径
+test: C:\Users\86134\Desktop\电赛\yolotrain\images\test  # 测试集图片路径（如果有的话）
+
+# 数据集信息
+nc: 2  # 类别数量
+names: ['cross','center']  # 类别名称列表
