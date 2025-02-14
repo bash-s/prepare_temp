@@ -1,0 +1,12 @@
+<launch>
+  <!-- Launch gmapping for SLAM -->
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <remap from="scan" to="/scan"/> <!-- Remap scan topic to /scan -->
+    <param name="odom_frame" value="camera_init"/> <!-- Odometry frame -->
+    <param name="base_frame" value="aft_mapped"/> <!-- Base frame of the robot -->
+    <param name="map_frame" value="map"/> <!-- Map frame -->
+    <param name="delta" value="0.05"/> <!-- Minimum distance for map update -->
+  </node>
+  <node pkg="tf" type="static_transform_publisher" name="laser_to_base" args="0 0 0 0 0 0 unilidar_lidar aft_mapped 100"/>
+</launch>
+<!-- base:aft_mapped odom:camera_init-->

@@ -1,0 +1,25 @@
+<launch>
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+        <!-- 话题重映射 -->
+        <remap from="cloud_in" to="/unilidar/cloud"/>  <!-- 输入的点云话题 -->
+        <remap from="scan" to="/scan"/>                 <!-- 输出的激光扫描话题 -->
+
+        <!-- 参数配置 -->
+        <!-- 高度范围：只转换该范围内的点云数据 -->
+        <param name="min_height" value="-0.05"/>         <!-- 最小高度（单位：米） -->
+        <param name="max_height" value="0.05"/>          <!-- 最大高度 -->
+
+        <!-- 角度范围：-π到π表示全360度扫描 -->
+        <param name="angle_min" value="-3.14159"/>      <!-- 最小角度（弧度） -->
+        <param name="angle_max" value="3.14159"/>       <!-- 最大角度 -->
+        <param name="angle_increment" value="0.0087"/>  <!-- 角度分辨率（约0.5度） -->
+
+        <!-- 距离范围 -->
+        <param name="range_min" value="0.05"/>           <!-- 最小有效距离（米） -->
+        <param name="range_max" value="50.0"/>          <!-- 最大有效距离 -->
+
+        <!-- 坐标系与处理参数 -->
+        <param name="use_inf" value="true"/>            <!-- 允许无限远距离 -->
+        
+    </node>
+</launch>
